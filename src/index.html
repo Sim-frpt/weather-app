@@ -11,8 +11,8 @@
   </header>
   <section class="input-container">
     <div class="text-input">
-      <label class="input-container__label city-label" for="text-input">Enter a city</label>
-      <input class="input-container__text" id="text-input" type="text" name="text-input">
+      <label class="input-container__label city-label" for="text-input">Enter a city (or city + country code)</label>
+      <input class="input-container__text" id="text-input" type="text" name="text-input" value="" placeholder="Ex: London / London, uk">
       <button class="input-container__button">Go!</button>
     </div>
     <div class="temp-input">
@@ -22,10 +22,13 @@
   </section>
   <main class="weather-card">
     <h2 class="weather-card__city">Liege</h2>
-    <span class="weather-card__icon">sun icon</span>
+    <span class="weather-card__img-container">
+      <img class="weather-card__icon" src="" alt="">
+    </span>
     <p class="weather-card__main">Sunny</p>
     <p class="weather-card__desc">Super sunny</p>
     <p class="weather-card__temp">temp</p>
+    <p class="weather-card__feels-like-temp">feels like temp</p>
   </main>
 </body>
 </html>

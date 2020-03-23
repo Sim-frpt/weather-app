@@ -10,8 +10,7 @@ const tempToggleButton = document.querySelector( ".input-container__checkbox");
 const handleclick = e => {
   const cityName = cityInput.value;
   const tempPreferences = tempToggleButton.checked ? "metric" : "imperial";
-  getWeatherData(cityName, tempPreferences);
+  getWeatherData( cityName, tempPreferences );
 }
 
 sendInputButton.addEventListener( 'click', handleclick );
-//getWeatherData('liege');

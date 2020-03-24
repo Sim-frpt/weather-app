@@ -6,17 +6,24 @@
   <title>Weather app</title>
 </head>
 <body>
-  <header>
+  <header class="header">
     <h1 class="header__title">What's the weather like?</h1>
   </header>
   <section class="form-container">
     <form class="weather-form">
-      <label class="input-container__label city-label" for="text-input">Enter a city (or city + country code)</label>
-      <input class="input-container__text" id="text-input" type="text" name="text-input" placeholder="Ex: London / London, uk" minlength="2" maxlength="20" required>
+      <div class="weather-form__element">
+        <label class="input-container__label city-label" for="text-input">Enter a city (or city + country code)</label>
+        <input class="input-container__text" id="text-input" type="text" name="text-input" placeholder="Ex: London / London, uk" minlength="2" maxlength="20" required>
+      </div>
 
-      <label class="input-container__label temp-label" for="checkbox-input">Temperature</label>
-      <input class="input-container__checkbox" type="checkbox" name="text-input" id="checkbox-input">
-      <button class="input-container__button" type="submit">Go!</button>
+      <div class="weather-form__element">
+        <label class="input-container__label temp-label" for="checkbox-input">Temperature</label>
+        <input class="input-container__checkbox" type="checkbox" name="text-input" id="checkbox-input">
+      </div>
+
+      <div class="weather-form__element weather-form__control">
+        <button class="input-container__button" type="submit">Go!</button>
+      </div>
     </form>
   </section>
   <main class="weather-card">

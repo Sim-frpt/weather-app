@@ -71,7 +71,7 @@ const createDomNodes = (weatherObj) => {
 }
 
 const resetWeatherStylingClasses = (element, classesToKeep) => {
-  element.ClassName = '';
+  element.className = '';
 
   classesToKeep.forEach( className => element.classList.add(className));
 };

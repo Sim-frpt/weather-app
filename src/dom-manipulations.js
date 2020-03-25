@@ -51,11 +51,11 @@ const createDomNodes = (weatherObj) => {
 
   const weatherCardTemp = document.createElement("p");
   weatherCardTemp.classList.add("weather-card__temp");
-  weatherCardTemp.textContent = weatherObj.mainTemp + " " + weatherObj.tempUnit;
+  weatherCardTemp.textContent = weatherObj.mainTemp + weatherObj.tempUnit;
 
   const weatherCardFeelsLikeTemp = document.createElement("p");
   weatherCardFeelsLikeTemp.classList.add("weather-card__feels-like-temp");
-  weatherCardFeelsLikeTemp.textContent = "Perception: " +  weatherObj.feelsLikeTemp + " " +  weatherObj.tempUnit;
+  weatherCardFeelsLikeTemp.textContent = "Perception: " +  weatherObj.feelsLikeTemp + weatherObj.tempUnit;
 
   const tempNode = document.createDocumentFragment();
 

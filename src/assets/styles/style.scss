@@ -63,55 +63,42 @@ body {
       }
 
       &__checkbox {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-
-      &__toggler {
         position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-      }
-
-      &__slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        border-radius: 17px;
-        background-color: #ccc;
-        transition: .4s;
+        width: 70px;
+        height: 40px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        background: $green-sheen;
+        border: 1px solid $dark-grey;
+        border-radius: 20px;
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+        transition: .5s;
 
         &::before {
-          position: absolute;
           content: "\2103";
-          top: 5px;
-          left: 10px;
-          background-color: white;
-          background-size: contain;
-          transition: .4s;
+          font-size: .8em;
+          color: white;
+          font-weight: bold;
+          padding: 10px 0 0 4px;
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          border-radius: 20px;
+          top: 4px;
+          left: 5px;
+          border: 1px solid $dark-grey;
+          background: $dark-grey;;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+          transition: .5s;
+        }
+
+        &:checked::before{
+          content: "\2109";
+          transform: translateX(29px);
         }
       }
-    }
-
-    input:checked + .input-container__slider {
-      background-color: #2196F3;
-
-      &::before {
-        content: "\2109";
-      }
-    }
-
-    input:focus + .input-container__slider {
-      box-shadow: 0 0 1px #2196F3;
-    }
-
-    input:checked + .input-container__slider::before {
-      transform: translateX(26px);
     }
   }
 
@@ -172,4 +159,3 @@ body {
     box-shadow: 5px 5px 40px #00486e;
   }
 }
-

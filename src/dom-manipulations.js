@@ -5,15 +5,34 @@ const updateDom = (weatherObj = {}) => {
     weatherCard.removeChild(weatherCard.lastChild);
   }
 
-  const cardTitle = document.createElement("h2");
-  cardTitle.classList.add(".weather-card__title");
-  
   // If there is no city name, something went wrong w/ fetching the data
   if ( typeof weatherObj.city === "undefined") {
-    cardTitle.textContent = "Something went wrong, please make sure you entered a correct city name in this format: London or London, uk"; 
-    weatherCard.append(cardTitle);
+    addErrorMessage(weatherCard);
     return;
   }
+
+  resetWeatherStylingClasses(weatherCard, ["weather-card"]);
+
+  const weatherCardStylingClass = `weather--${weatherObj.main.toLowerCase()}`;
+  weatherCard.classList.add(weatherCardStylingClass);
+
+  const weatherNodes = createDomNodes(weatherObj);
+
+  weatherCard.append(weatherNodes);
+}
+
+const addErrorMessage = (container) => {
+  const cardTitle = document.createElement("h2");
+  cardTitle.textContent = "Something went wrong, please make sure you entered a correct city name in this format: \"London\" or \"London, uk\"";
+
+  container.append(cardTitle);
+
+  return;
+}
+
+const createDomNodes = (weatherObj) => {
+  const cardTitle = document.createElement("h2");
+  cardTitle.classList.add(".weather-card__title");
 
   cardTitle.textContent = weatherObj.city;
 
@@ -21,35 +40,40 @@ const updateDom = (weatherObj = {}) => {
   cardImgContainer.classList.add("weather-card__img-container");
 
   const cardIcon = document.createElement("img");
-  cardIcon.classList.add(".weather-card__icon");
+  cardIcon.classList.add("weather-card__icon");
   cardIcon.src = weatherObj.icon;
 
   cardImgContainer.append( cardIcon );
 
-  const cardWeather = document.createElement("p");
-  cardWeather.classList.add(".weather-card__main");
-  cardWeather.textContent = `Weather: ${weatherObj.weather}`;
-
   const cardDescription = document.createElement("p");
-  cardDescription.classList.add(".weather-card__desc");
+  cardDescription.classList.add("weather-card__desc");
   cardDescription.textContent = weatherObj.description;
 
   const weatherCardTemp = document.createElement("p");
-  weatherCardTemp.classList.add(".weather-card__temp");
+  weatherCardTemp.classList.add("weather-card__temp");
   weatherCardTemp.textContent = weatherObj.mainTemp + " " + weatherObj.tempUnit;
 
   const weatherCardFeelsLikeTemp = document.createElement("p");
-  weatherCardFeelsLikeTemp.classList.add(".weather-card__feels-like-temp");
-  weatherCardFeelsLikeTemp.textContent = "Feels like " +  weatherObj.feelsLikeTemp + " " +  weatherObj.tempUnit;
+  weatherCardFeelsLikeTemp.classList.add("weather-card__feels-like-temp");
+  weatherCardFeelsLikeTemp.textContent = "Perception: " +  weatherObj.feelsLikeTemp + " " +  weatherObj.tempUnit;
 
-  weatherCard.append(
+  const tempNode = document.createDocumentFragment();
+
+  tempNode.append(
     cardTitle,
     weatherCardTemp,
+    weatherCardFeelsLikeTemp,
     cardImgContainer,
-    cardWeather,
     cardDescription,
-    weatherCardFeelsLikeTemp
   );
+
+  return tempNode;
 }
+
+const resetWeatherStylingClasses = (element, classesToKeep) => {
+  element.ClassName = '';
+
+  classesToKeep.forEach( className => element.classList.add(className));
+};
 
 export { updateDom };

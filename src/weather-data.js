@@ -25,13 +25,18 @@ const formatData = (data, tempPreferences) => {
   const weatherObj = {};
   const iconBaseUrl = "http://openweathermap.org/img/wn/";
 
-  weatherObj.city = data.name;
-  weatherObj.weather = data.weather[0].main;
+  // Get country code, but capitalize it
+  let countryCode = data.sys.country.toLowerCase();
+  countryCode = countryCode.charAt(0).toUpperCase() + countryCode.substring(1);
+
+  weatherObj.main = data.weather[0].main;
+  weatherObj.city = data.name + ", " + countryCode;
   weatherObj.description = data.weather[0].description;
   weatherObj.icon = iconBaseUrl + data.weather[0].icon + "@2x.png";
   weatherObj.mainTemp = data.main.temp;
   weatherObj.feelsLikeTemp = data.main.feels_like;
   weatherObj.tempUnit = tempPreferences === "metric" ? "\u2103" : "\u2109";
+
   return weatherObj;
 }
 

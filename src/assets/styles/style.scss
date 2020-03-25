@@ -37,9 +37,8 @@ body {
 }
 
 .weather-form {
-  width: 50vw;
+  width: 40vw;
   margin: auto;
-  padding: 1em;
   font-size: 1.2em;
   border: 2px solid $dark-grey;
   border-radius: 4px;
@@ -47,59 +46,64 @@ body {
   &__element {
     text-align: center;
     padding: 0.5em;
-    margin-bottom: 0.5em;
 
-    label {
-      display: block;
-      margin: 0 3em 1em 3em;
-      padding: 0.5em;
-      border-bottom: 2px solid $green-sheen;
-    }
+    .input-container {
+      &__label {
+        display: block;
+        margin: 0 3em 1em 3em;
+        padding: 0.5em;
+        border-bottom: 2px solid $green-sheen;
+      }
 
-    input {
-      display: block;
-      padding: 0.5em;
-      width: 90%;
-      margin:  0.5em auto;
-    }
+      &__text {
+        display: block;
+        padding: 0.5em;
+        width: 90%;
+        margin: 0 auto;
+      }
 
-    input[type = "checkbox"] {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
+      &__checkbox {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
 
-    .input-container__toggler {
-      position: relative;
-      display: inline-block;
-      width: 60px;
-      height: 34px;
-      background-color: blue;
-    }
+      &__toggler {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
 
-    .input-container__slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      transition: .4s;
-
-      &::before {
+      &__slider {
         position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 5px;
-        background-color: white;
+        cursor: pointer;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 17px;
+        background-color: #ccc;
         transition: .4s;
+
+        &::before {
+          position: absolute;
+          content: "\2103";
+          top: 5px;
+          left: 10px;
+          background-color: white;
+          background-size: contain;
+          transition: .4s;
+        }
       }
     }
 
     input:checked + .input-container__slider {
       background-color: #2196F3;
+
+      &::before {
+        content: "\2109";
+      }
     }
 
     input:focus + .input-container__slider {
@@ -109,8 +113,35 @@ body {
     input:checked + .input-container__slider::before {
       transform: translateX(26px);
     }
-
   }
+
+  &__control {
+    margin: 0.5em;
+    text-align: center;
+  }
+
+  .input-container__button {
+    text-transform: uppercase;
+    font-weight: bold;
+    height: 2em;
+    width: 4em;
+    line-height: 2em;
+    background-color: $green-sheen;
+    border: 1px solid $dark-grey;
+    border-radius: 4px;
+    transition: all 0.2s cubic-bezier(0.39, 0.58, 0.57, 1);
+
+    &:hover{
+      transform: scale(1.1);
+    }
+  }
+}
+
+.weather-card {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 0 30%;
+  border: 1px solid $dark-grey
 }
 
 

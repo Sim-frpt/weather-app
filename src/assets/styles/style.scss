@@ -36,6 +36,7 @@ body {
 }
 
 .weather-form {
+  text-align: center;
   width: 40vw;
   margin: auto;
   font-size: 1.2em;
@@ -63,6 +64,7 @@ body {
 
       &__checkbox {
         position: relative;
+        cursor: pointer;
         width: 70px;
         height: 40px;
         appearance: none;
@@ -128,7 +130,7 @@ body {
   font-size: 1.5em;
   text-align: center;
   font-weight: bold;
-  margin: 0 30%;
+  margin: 0 30% 1em;
   padding: 0.5em;
   box-shadow: 4px 4px 10px #5D737E;
   border: 1px solid black;
@@ -161,5 +163,27 @@ body {
 
   &.weather--thunderstorm{
     box-shadow: 5px 5px 40px #00486e;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .weather-form{
+    min-width: 300px;
+  }
+
+  .weather-card {
+    min-width: 300px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .weather-card {
+    margin: auto 1em;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .weather-card {
+    margin: auto 0.5em 0.5em;
   }
 }

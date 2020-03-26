@@ -1,9 +1,19 @@
-const updateDom = (weatherObj = {}) => {
-  const weatherCard = document.querySelector(".weather-card");
+import loadingSpinner from "./assets/images/Spinner-1s-200px.gif";
 
-  while (weatherCard.firstChild) {
-    weatherCard.removeChild(weatherCard.lastChild);
-  }
+const addLoader = () => {
+  const weatherCard = getEmptyWeatherCardContainer();
+
+  const loader = document.createElement("img");
+  loader.classList.add("weather-card__loader");
+
+  loader.src = loadingSpinner;
+
+  weatherCard.append(loader);
+};
+
+const updateDom = (weatherObj = {}) => {
+
+  const weatherCard = getEmptyWeatherCardContainer();
 
   // If there is no city name, something went wrong w/ fetching the data
   if ( typeof weatherObj.city === "undefined") {
@@ -29,6 +39,16 @@ const addErrorMessage = (container) => {
 
   return;
 }
+
+const getEmptyWeatherCardContainer = () => {
+  const weatherCard = document.querySelector(".weather-card");
+
+  while (weatherCard.firstChild) {
+    weatherCard.removeChild(weatherCard.lastChild);
+  }
+
+  return weatherCard;
+};
 
 const createDomNodes = (weatherObj) => {
   const cardTitle = document.createElement("h2");
@@ -76,4 +96,4 @@ const resetWeatherStylingClasses = (element, classesToKeep) => {
   classesToKeep.forEach( className => element.classList.add(className));
 };
 
-export { updateDom };
+export { updateDom, addLoader };

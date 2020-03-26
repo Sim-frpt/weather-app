@@ -1,10 +1,12 @@
-import { updateDom } from "./dom-manipulations";
+import { updateDom, addLoader } from "./dom-manipulations";
 
 const apiKey = "cac96e4f3c9bcf5366ecbcc47bd0dcf2";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
 
 const getWeatherData = ( location, tempPreferences ) => {
   const url = `${apiUrl}q=${location}&appid=${apiKey}&units=${tempPreferences}`;
+
+  addLoader();
 
   fetch(url)
     .then(response => {

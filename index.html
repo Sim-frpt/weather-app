@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather app</title>
+<link rel="shortcut icon" href="favicon.ico"></head>
+<body>
+  <header class="header">
+    <h1 class="header__title">What's the weather like?</h1>
+  </header>
+  <section class="form-container">
+    <form class="weather-form">
+      <div class="weather-form__element">
+        <label class="input-container__label city-label" for="text-input">Enter a city (or city + country code)</label>
+        <input class="input-container__text" id="text-input" type="text" name="text-input" placeholder="Ex: London / London, uk" minlength="2" maxlength="20" required>
+      </div>
+
+      <div class="weather-form__element">
+        <label class="input-container__label temp-label" for="checkbox-input">Temperature units</label>
+        <input class="input-container__checkbox" type="checkbox" name="text-input" id="checkbox-input">
+      </div>
+
+      <div class="weather-form__control">
+        <button class="input-container__button" type="submit">Go!</button>
+      </div>
+    </form>
+  </section>
+  <main class="weather-card">
+    <h2 class="weather-card__title">
+      Enter a city to get weather data
+    </h2>
+  </main>
+<script type="text/javascript" src="main.js"></script></body>
+</html>
+
